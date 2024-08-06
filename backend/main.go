@@ -53,8 +53,6 @@ func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
 		generateStructures:          string2bool(r.Header.Get("generateStructures")),
 		hardcore:                    string2bool(r.Header.Get("hardcore")),
 		hideOnlinePlayers:           string2bool(r.Header.Get("hideOnlinePlayers")),
-		initalDisabledPacks:         r.Header.Get("initalDisabledPacks"),
-		initalEnabledPacks:          r.Header.Get("initalEnabledPacks"),
 		levelName:                   r.Header.Get("levelName"),
 		levelSeed:                   r.Header.Get("levelSeed"),
 		maxChainedNeighborUpdates:   string2int(r.Header.Get("maxChainedNeighborUpdates")),

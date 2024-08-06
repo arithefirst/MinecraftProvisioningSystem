@@ -22,8 +22,6 @@ type serverProperties struct {
 	generateStructures          bool   `schema:"generateStructures"`
 	hardcore                    bool   `schema:"hardcore"`
 	hideOnlinePlayers           bool   `schema:"hideOnlinePlayers"`
-	initalDisabledPacks         string `schema:"initalDisabledPacks"`
-	initalEnabledPacks          string `schema:"initalEnabledPacks"`
 	levelName                   string `schema:"levelName"`
 	levelSeed                   string `schema:"levelSeed"`
 	maxChainedNeighborUpdates   int    `schema:"maxChainedNeighborUpdates"`
@@ -217,10 +215,10 @@ func generateServerProperties(input serverProperties) string {
 	}
 
 	// Set initial-disabled-packs
-	serverProps = serverProps + "initial-disabled-packs=" + input.initalDisabledPacks + "\n"
+	serverProps = serverProps + "initial-disabled-packs=" + "" + "\n"
 
 	// Set initial-enabled-packs
-	serverProps = serverProps + "initial-enabled-packs=" + input.initalEnabledPacks + "\n"
+	serverProps = serverProps + "initial-enabled-packs=" + "vanilla," + "\n"
 
 	// Set level-name
 	serverProps = serverProps + "level-name=" + input.levelName + "\n"
