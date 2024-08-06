@@ -19,7 +19,13 @@
 .innerdiv {
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 2px
+  padding-bottom: 3px
+}
+
+.innerdiv-col3 {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 339px
 }
 
 .solid-thin {

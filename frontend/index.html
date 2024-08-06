@@ -26,7 +26,7 @@
       <div class="row gx-1">
          <div class="col-4 round bcolor">
             <div class="innerdiv-toggles">
-               <h3 class="roboto-bold text-center" style="margin-top: 5px;">Toggles</h3>
+               <h3 class="roboto-bold text-center" style="padding-top: 5px;">Toggles</h3>
                <hr class="solid-bold" />
                <!-- Toggle Switches -->
                <div class="form-check form-switch">
@@ -168,7 +168,7 @@
          </div>
          <div class="col-4 bcolor">
             <div class="innerdiv">
-               <h3 class="roboto-bold text-center" style="margin-top: 5px">Column 2</h3>
+               <h3 class="roboto-bold text-center" style="padding-top: 5px">Column 2</h3>
                <hr class="solid-bold" />
                <!-- Difficulty -->
                <div class="input-group d-flex align-items-center mb-1">
@@ -275,9 +275,63 @@
             </div>
          </div>
          <div class="col-4 bcolor">
-            <div class="innerdiv">
-               <h3 class="roboto-bold text-center" style="margin-top: 5px">Column 3</h3>
+            <div class="innerdiv-col3">
+               <h3 class="roboto-bold text-center" style="padding-top: 5px">Column 3</h3>
                <hr class="solid-bold" />
+               <!-- Rcon Port -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Rcon Port</span>
+                  <input value="25575" type="number" min="1" max="65534" class="form-control" id="rconPort">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="Sets the port for the RCON server."></i>
+               </div>
+               <!-- Resource Pack -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Resource Pack</span>
+                  <input value="" type="text" class="form-control" id="resourcePack">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title='Optional URI to a resource pack. The player may choose to use it unless "Require resource pack" is enabled.'></i>
+               </div>
+               <!-- Resource Pack Prompt -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Resource Pack Prompt</span>
+                  <input value="" type="text" class="form-control" id="resourcePackPrompt">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title='Optional, adds a custom message to be shown on resource pack prompt when "Require resource pack" is used.'></i>
+               </div>
+               <!-- Resource Pack SHA1 -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Resource Pack SHA1</span>
+                  <input value="" type="text" class="form-control" id="resourcePackSha1">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title='Optional SHA-1 digest of the resource pack, in lowercase hexadecimal. It is recommended to specify this, because it is used to verify the integrity of the resource pack.'></i>
+               </div>
+               <!-- Server IP -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Server IP</span>
+                  <input value="" type="text" class="form-control" id="serverIP">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title='Binds the server to a particular IP. It is strongly recommended that this be left blank.'></i>
+               </div>
+               <!-- Server Port -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Server Port</span>
+                  <input value="25565" type="number" min="1" max="65534" class="form-control" id="serverPort">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="Changes the port the server is hosting (listening) on. This port must be forwarded if the server is hosted in a network using NAT (if the player has a home router/firewall)."></i>
+               </div>
+               <!-- Simulation Distance -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Simulation Distance</span>
+                  <input id="simulationDistance" value="10" type="number" min="3" max="32" class="form-control">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="Sets the maximum distance from players that living entities may be located in order to be updated by the server, measured in chunks in each direction of the player (radius, not diameter). If entities are outside of this radius, then they will not be ticked by the server nor will they be visible to players."></i>
+               </div>
+               <!-- Spawn Protection -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">Spawn Protection</span>
+                  <input id="spawnProtection" value="0" type="number" min="3" max="32" class="form-control">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="Determines the side length of the square spawn protection area as 2x+1. Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3 square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. If there are no ops set on the server, the spawn protection is disabled automatically."></i>
+               </div>
+               <!-- View Distance -->
+               <div class="input-group d-flex align-items-center mb-1">
+                  <span class="input-group-text">View Distance</span>
+                  <input id="viewDistance" value="10" type="number" min="3" max="32" class="form-control">
+                  <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="Sets the amount of world data the server sends the client, measured in chunks in each direction of the player (radius, not diameter). It determines the server-side viewing distance."></i>
+               </div>
             </div>
          </div>
       </div>
