@@ -1,7 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    </head>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="randombullshitGO.js"></script>
+  </head>
+  <body class="justify-content-center">
+    <h1 class="text-center" >Minecraft server.properties Compiler</h1>
+    <div class="text-center mb-2"><button onclick="sendRequest()" type="button" class="btn btn-primary">Compile server.properties</button></div>
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top: 3px;">
+        To keep an item at it's default setting, don't modify it's switch or input
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="container justify-content-center">
+      <div class="row mx-auto">
+        <div class="col-2 margin-lr"></div>
+        <div class="col-4 round margin-lr">
+          <h3 class="roboto-bold text-center" style="margin-top: 5px;">Toggles</h3>
+          <hr class="solid-bold" />
+          <!-- Toggle Switches -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="allowFlight" />
+            <label class="form-check-label" for="allowFlight">Allow flight</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="allowNether" />
+            <label class="form-check-label" for="allowNether">Allow Nether</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Allows players to travel to the nether"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="broadcastConsoleOps" />
+            <label class="form-check-label" for="broadcastConsoleOps">Broadcast Console to OPs</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Send console command outputs to all online operators"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="broadcastRconOps" />
+            <label class="form-check-label" for="broadcastRconOps">Broadcast RCON to OPs</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Send rcon console command outputs to all online operators"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enableCommandBlock" />
+            <label class="form-check-label" for="enableCommandBlock">Enable Command Blocks</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Defines wether or not command blocks will work on the server"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enableJmxMonitoring" />
+            <label class="form-check-label" for="enableJmxMonitoring">Enable JMX Monitoring</label>
+            <i class="bi bi-info-circle" href="#" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Exposes an MBean with the Object name <code>net.minecraft.server:type=Server </code> and two attriubtes <code>averageTickTime</code> and <code>tickTimes</code> exposing the tick times in milliseconds"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enableRcon" />
+            <label class="form-check-label" for="enableRcon">Enable RCON</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enables remote access to the server console"></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enableStatus" />
+            <label class="form-check-label" for="enableStatus">Enable Status</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title='Makes the server appear as "online" on the server list. If disabled, it will suppress replies from clients. This means it will appear as offline, but will still accept connections.'></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enableQuery" />
+            <label class="form-check-label" for="enableQuery">Enable Query</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enables GameSpy4 protocol server listener. Used to get information about server."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enforceSecureProfile" />
+            <label class="form-check-label" for="enforceSecureProfile">Enforce secure profile</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If enabled, players without a Mojang-signed public key will not be able to connect to the server. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="enforceWhitelist" />
+            <label class="form-check-label" for="enforceWhitelist">Enforce whitelist</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="When this option is enabled, users who are not present on the whitelist (if it's enabled) get kicked from the server after the server reloads the whitelist file."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="forceGamemode" />
+            <label class="form-check-label" for="forceGamemode">Force gamemode</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Force players to join in the default game mode."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="generateStructures" />
+            <label class="form-check-label" for="generateStructures">Generate structures</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="true 	Defines whether structures (such as villages) can be generated. Dungeons still generate if this is set to false."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="hardcore" />
+            <label class="form-check-label" for="hardcore">Hardcore server</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If enabled, server difficulty is ignored and set to hard and players are set to spectator mode if they die. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="hideOnlinePlayers" />
+            <label class="form-check-label" for="hideOnlinePlayers">Hide online players</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If enabled, a player list is not sent on status requests. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="onlineMode" />
+            <label class="form-check-label" for="onlineMode">Online mode</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If enabled, the server checks connecting players against Minecraft account database. Disabling this allows players with unlicensed copies of Minecraft to join."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="preventProxyConnections" />
+            <label class="form-check-label" for="preventProxyConnections">Prevent proxy connections</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If the ISP/AS sent from the server is different from the one from Mojang Studios' authentication server, the player is kicked. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="previewsChat" />
+            <label class="form-check-label" for="previewsChat">Preview chat</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="When enabled, a server-controlled preview appears above the chat edit box, showing players how the message will look when sent."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="pvp" />
+            <label class="form-check-label" for="pvp">PvP</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enable PvP on the server. Players shooting themselves with arrows receive damage only if PvP is enabled. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="requireResourcePack" />
+            <label class="form-check-label" for="requireResourcePack">Require resource pack</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="When this option is enabled, players will be prompted for a response and will be disconnected if they decline the resource pack. Only set this to true if you have specified a resource pack."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="snooperEnabled" />
+            <label class="form-check-label" for="snooperEnabled">Snooper enabled</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sets whether the server sends snoop data regularly to http://snoop.minecraft.net. "></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="spawnAnimals" />
+            <label class="form-check-label" for="spawnAnimals">Spawn Animals</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Determines if animals can spawn."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="spawnMonsters" />
+            <label class="form-check-label" for="spawnMonsters">Spawn Monsters</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Determines if monsters can spawn."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="spawnNPCs" />
+            <label class="form-check-label" for="spawnNPCs">Spawn Villagers</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Determines if villagers can spawn."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="syncChunkWrites" />
+            <label class="form-check-label" for="syncChunkWrites">Synchronous chunk writes </label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enables synchronous chunk writes."></i>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="useNativeTransport" />
+            <label class="form-check-label" for="useNativeTransport">Use native transport</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enables optimized packet sending/receiving on Linux."></i>
+          </div>
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="whitelist" />
+            <label class="form-check-label" for="whitelist">Whitelist Enabled</label>
+            <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Enables a whitelist on the server."></i>
+          </div>
+        </div>
+        <div class="col-4 round margin-lr">
+          <h3 class="roboto-bold text-center" style="margin-top: 5px">Column 2</h3>
+          <hr class="solid-bold" />
+          <div class="input-group">
+            <span class="input-group-text">hai</span>
+            <input value="0" type="number" class="form-control" id="difficulty" min="0" max="3">
+            <i class="bi bi-info-circle ms-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Determines if animals can spawn."></i>
+          </div>
+        </div>
+    </div>
+    <!-- Add 1 newline of blank space at the bottom of the page -->
+    <a style="opacity: 0;">if you can read this you're gay</a>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
