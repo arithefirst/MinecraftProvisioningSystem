@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
+	"strconv"
 )
 
 // Use a special bool type to convert text to bools
@@ -23,7 +25,11 @@ func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
 
 	var jsonProperties serverProperties
 
-	jsonString := r.Header.Get("jsonString")
+	encodedJsonString := r.URL.Query().Get("jsonString")
+	jsonString, err1 := url.QueryUnescape(encodedJsonString)
+	if err1 != nil {
+		fmt.Fprintf(w, "Error decoding url: %v", err1)
+	}
 	fmt.Printf("Recived jsonString: %v\n", jsonString)
 
 	err := json.Unmarshal([]byte(jsonString), &jsonProperties)
@@ -32,11 +38,16 @@ func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "%v", jsonProperties)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	fmt.Fprintf(w, "%v", generateServerProperties(jsonProperties))
 }
 
 func main() {
+	// Set the port for the server to run on
+	var port uint16 = 8080
+
 	http.HandleFunc("/server-properties", serverPropertiesHttp)
-	fmt.Println("Server started on port 8080")
-	http.ListenAndServe(":8080", nil)
+	fmt.Printf("Server started on port %v\n", port)
+	var portString string = ":" + strconv.Itoa(int(port))
+	http.ListenAndServe(portString, nil)
 }

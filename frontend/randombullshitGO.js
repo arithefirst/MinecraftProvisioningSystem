@@ -1,11 +1,22 @@
 // Initalize the tooltips
-document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-})
+document.addEventListener("DOMContentLoaded", function () {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+});
 
+function getUrlVars() {
+  var vars = [],
+    hash;
+  var hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&");
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split("=");
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
+}
 
 function sendRequest() {
   // Get the values of all of the switches
@@ -66,17 +77,25 @@ function sendRequest() {
   var levelName = $("#levelName").val();
   var levelSeed = $("#levelName").val();
 
-  console.log(
-    `{"AllowFlight": "${allowFlight}", "AllowNether": "${allowNether}", "BroadcastConsoleOps": "${broadcastConsoleOps}", "BroadcastRconOps": "${broadcastRconOps}", "Difficulty": "${difficulty}", "EnableCommandBlock": "${enableCommandBlock}", "EnableJmxMonitoring": "${enableJmxMonitoring}", "EnableRcon": "${enableRcon}", "EnableStatus": "${enableStatus}", "EnableQuery": "${enableQuery}", "EnforceSecureProfile": "${enforceSecureProfile}", "EnforceWhitelist": "${enforceWhitelist}", "EntityBroadcastRangePercent": ${entityBroadcastRangePercent}, "ForceGamemode": "${forceGamemode}", "FuncPermLevel": ${funcPermLevel}, "Gamemode": "${gamemode}", "GenerateStructures": "${generateStructures}", "Hardcore": "${hardcore}", "HideOnlinePlayers": "${hideOnlinePlayers}", "LevelName": "${levelName}", "LevelSeed": "${levelSeed}", "MaxChainedNeighborUpdates": ${maxChainedNeighborUpdates}, "MaxPlayers": ${maxPlayers}, "MaxTickTime": ${maxTickTime}, "MaxWorldSize": ${maxWorldSize}, "Motd": "${motd}", "NetworkCompressionThreshold": ${networkCompressionThreshold}, "OnlineMode": "${onlineMode}", "OpPermLevel": ${opPermLevel}, "PlayerIdleTimeout": ${playerIdleTimeout}, "PreventProxyConnections": "${preventProxyConnections}", "PreviewsChat": "${previewsChat}", "Pvp": "${pvp}", "QueryPort": ${queryPort}, "RateLimit": ${rateLimit}, "RconPassword": "${rconPassword}", "RconPort": ${rconPort}, "ResourcePack": "${resourcePack}", "ResourcePackPrompt": "${resourcePackPrompt}", "ResourcePackSha1": "${resourcePackSha1}", "RequireResourcePack": "${requireResourcePack}", "ServerIP": "${serverIP}", "ServerPort": ${serverPort}, "SimDistance": ${simDistance}, "SnooperEnabled": "${snooperEnabled}", "SpawnAnimals": "${spawnAnimals}", "SpawnMonsters": "${spawnMonsters}", "SpawnNPCs": "${spawnNPCs}", "SpawnProtection": ${spawnProtection}, "SyncChunkWrites": "${syncChunkWrites}", "UseNativeTransport": "${useNativeTransport}", "ViewDistance": ${viewDistance}, "Whitelist": "${whitelist}"}`
-  );
+  var jsonString = `{"AllowFlight": "${allowFlight}", "AllowNether": "${allowNether}", "BroadcastConsoleOps": "${broadcastConsoleOps}", "BroadcastRconOps": "${broadcastRconOps}", "Difficulty": "${difficulty}", "EnableCommandBlock": "${enableCommandBlock}", "EnableJmxMonitoring": "${enableJmxMonitoring}", "EnableRcon": "${enableRcon}", "EnableStatus": "${enableStatus}", "EnableQuery": "${enableQuery}", "EnforceSecureProfile": "${enforceSecureProfile}", "EnforceWhitelist": "${enforceWhitelist}", "EntityBroadcastRangePercent": ${entityBroadcastRangePercent}, "ForceGamemode": "${forceGamemode}", "FuncPermLevel": ${funcPermLevel}, "Gamemode": "${gamemode}", "GenerateStructures": "${generateStructures}", "Hardcore": "${hardcore}", "HideOnlinePlayers": "${hideOnlinePlayers}", "LevelName": "${levelName}", "LevelSeed": "${levelSeed}", "MaxChainedNeighborUpdates": ${maxChainedNeighborUpdates}, "MaxPlayers": ${maxPlayers}, "MaxTickTime": ${maxTickTime}, "MaxWorldSize": ${maxWorldSize}, "Motd": "${motd}", "NetworkCompressionThreshold": ${networkCompressionThreshold}, "OnlineMode": "${onlineMode}", "OpPermLevel": ${opPermLevel}, "PlayerIdleTimeout": ${playerIdleTimeout}, "PreventProxyConnections": "${preventProxyConnections}", "PreviewsChat": "${previewsChat}", "Pvp": "${pvp}", "QueryPort": ${queryPort}, "RateLimit": ${rateLimit}, "RconPassword": "${rconPassword}", "RconPort": ${rconPort}, "ResourcePack": "${resourcePack}", "ResourcePackPrompt": "${resourcePackPrompt}", "ResourcePackSha1": "${resourcePackSha1}", "RequireResourcePack": "${requireResourcePack}", "ServerIP": "${serverIP}", "ServerPort": ${serverPort}, "SimDistance": ${simDistance}, "SnooperEnabled": "${snooperEnabled}", "SpawnAnimals": "${spawnAnimals}", "SpawnMonsters": "${spawnMonsters}", "SpawnNPCs": "${spawnNPCs}", "SpawnProtection": ${spawnProtection}, "SyncChunkWrites": "${syncChunkWrites}", "UseNativeTransport": "${useNativeTransport}", "ViewDistance": ${viewDistance}, "Whitelist": "${whitelist}"}`;
 
-  location.reload()
+  const baseURL = "http://127.0.0.1:5500/frontend/";
+  console.log(jsonString);
+  window.location.replace(baseURL + "propertiesReturned.html?jsonString=" + encodeURI(jsonString));
 }
 
-function showToast(message) {
-    var toastEl = document.getElementById('toastContainer');
-    var bsToast = new bootstrap.Toast(toastEl);
-    var toastBody = toastEl.querySelector('.toast-body');
-    toastBody.innerHTML = message;
-    bsToast.show();
-  }  
+function pageSet(httpReturn) {
+  const displayReadyHTML = httpReturn.replace(/(\r\n|\r|\n)/g, "<br>");
+  $("#pageBody").html(displayReadyHTML);
+  console.log(httpReturn);
+}
+
+function responsePageLoad() {
+  const http = new XMLHttpRequest();
+  json = encodeURI(getUrlVars()["jsonString"]);
+  const url = "http://127.0.0.1:8080/server-properties?jsonString=" + json;
+  http.open("GET", url);
+  http.send();
+
+  http.onreadystatechange = (e) => pageSet(http.responseText);
+}
