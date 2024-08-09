@@ -79,9 +79,17 @@ function sendRequest() {
 
   var jsonString = `{"AllowFlight": "${allowFlight}", "AllowNether": "${allowNether}", "BroadcastConsoleOps": "${broadcastConsoleOps}", "BroadcastRconOps": "${broadcastRconOps}", "Difficulty": "${difficulty}", "EnableCommandBlock": "${enableCommandBlock}", "EnableJmxMonitoring": "${enableJmxMonitoring}", "EnableRcon": "${enableRcon}", "EnableStatus": "${enableStatus}", "EnableQuery": "${enableQuery}", "EnforceSecureProfile": "${enforceSecureProfile}", "EnforceWhitelist": "${enforceWhitelist}", "EntityBroadcastRangePercent": ${entityBroadcastRangePercent}, "ForceGamemode": "${forceGamemode}", "FuncPermLevel": ${funcPermLevel}, "Gamemode": "${gamemode}", "GenerateStructures": "${generateStructures}", "Hardcore": "${hardcore}", "HideOnlinePlayers": "${hideOnlinePlayers}", "LevelName": "${levelName}", "LevelSeed": "${levelSeed}", "MaxChainedNeighborUpdates": ${maxChainedNeighborUpdates}, "MaxPlayers": ${maxPlayers}, "MaxTickTime": ${maxTickTime}, "MaxWorldSize": ${maxWorldSize}, "Motd": "${motd}", "NetworkCompressionThreshold": ${networkCompressionThreshold}, "OnlineMode": "${onlineMode}", "OpPermLevel": ${opPermLevel}, "PlayerIdleTimeout": ${playerIdleTimeout}, "PreventProxyConnections": "${preventProxyConnections}", "PreviewsChat": "${previewsChat}", "Pvp": "${pvp}", "QueryPort": ${queryPort}, "RateLimit": ${rateLimit}, "RconPassword": "${rconPassword}", "RconPort": ${rconPort}, "ResourcePack": "${resourcePack}", "ResourcePackPrompt": "${resourcePackPrompt}", "ResourcePackSha1": "${resourcePackSha1}", "RequireResourcePack": "${requireResourcePack}", "ServerIP": "${serverIP}", "ServerPort": ${serverPort}, "SimDistance": ${simDistance}, "SnooperEnabled": "${snooperEnabled}", "SpawnAnimals": "${spawnAnimals}", "SpawnMonsters": "${spawnMonsters}", "SpawnNPCs": "${spawnNPCs}", "SpawnProtection": ${spawnProtection}, "SyncChunkWrites": "${syncChunkWrites}", "UseNativeTransport": "${useNativeTransport}", "ViewDistance": ${viewDistance}, "Whitelist": "${whitelist}"}`;
 
-  const baseURL = "http://127.0.0.1:5500/frontend/";
-  console.log(jsonString);
-  window.location.replace(baseURL + "propertiesReturned.html?jsonString=" + encodeURI(jsonString));
+  const currentUrl = window.location.href;
+  const baseUrl = currentUrl.split("?")[0];
+
+  window.location.replace(encodeURI(baseUrl + "?jsonString=" + jsonString + "&overlay=true"));
+}
+
+function spawnAlert() {
+  if (getUrlVars()["overlay"]) {
+    console.log("Enabling overlay....");
+    $("#overlay").css("visibility", "visible");
+  }
 }
 
 function pageSet(httpReturn) {

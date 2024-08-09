@@ -13,7 +13,10 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script src="randombullshitGO.js"></script>
    </head>
-   <body class="justify-content-center">
+   <div id="overlay" style="visibility: hidden;">
+      <div id="overlay-inner-alert" class="alert alert-primary" role="alert"></div>
+   </div>
+   <body class="justify-content-center" onload="spawnAlert()">
       <h1 class="text-center display-3" >Minecraft server.properties Compiler</h1>
       <div class="text-center mb-3"><button onclick="sendRequest()" type="button" class="btn btn-primary">Compile server.properties</button></div>
       <div class="d-flex align-items-center justify-content-center">
