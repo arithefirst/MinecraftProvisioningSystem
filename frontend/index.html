@@ -14,7 +14,12 @@
       <script src="randombullshitGO.js"></script>
    </head>
    <div id="overlay" style="visibility: hidden;">
-      <div id="overlay-inner-alert" class="alert alert-primary" role="alert"></div>
+      <div id="overlay-inner-alert" class="alert alert-primary" role="alert">
+         <div style="text-align: right;"><button type="button" class="btn-close" aria-label="Close" onclick="dissmissAlert()"></button></div>
+         <h1>Server Response</h1>
+         <body><pre><code id="server-response-display"></code></pre></body>
+         <button id="download" class="btn btn-primary" onclick="downloadData()">Download server.properties </button>
+      </div>
    </div>
    <body class="justify-content-center" onload="spawnAlert()">
       <h1 class="text-center display-3" >Minecraft server.properties Compiler</h1>

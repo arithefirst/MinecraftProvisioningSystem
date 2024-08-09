@@ -93,11 +93,18 @@ func generateServerProperties(input serverProperties) string {
 	}
 
 	// Check if difficulty is valid and set it
-	if input.Difficulty == "easy" || input.Difficulty == "normal" || input.Difficulty == "hard" || input.Difficulty == "peaceful" {
-		serverProps = serverProps + "difficulty=" + input.Difficulty + "\n"
-	} else {
+	switch strings.ToLower(input.Difficulty) {
+	case "easy":
+		serverProps = serverProps + "difficulty=easy\n"
+	case "normal":
+		serverProps = serverProps + "difficulty=normal\n"
+	case "hard":
+		serverProps = serverProps + "difficulty=hard\n"
+	case "peaceful":
+		serverProps = serverProps + "difficulty=peaceful\n"
+	default:
 		fmt.Println("Difficulty option invalid; Defaulting to easy")
-		serverProps = serverProps + "difficulty=easy"
+		serverProps = serverProps + "difficulty=easy\n"
 	}
 
 	// Set enable-command-block

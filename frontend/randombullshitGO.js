@@ -18,6 +18,14 @@ function getUrlVars() {
   return vars;
 }
 
+function truncate(inputString, searchString) {
+  const position = inputString.indexOf(searchString);
+  if (position === -1) {
+    return inputString; // Return the original string if searchString is not found
+  }
+  return inputString.substring(0, position);
+}
+
 function sendRequest() {
   // Get the values of all of the switches
   var allowFlight = $("#allowFlight").is(":checked");
@@ -75,7 +83,7 @@ function sendRequest() {
   var spawnProtection = $("#spawnProtection").val();
   var viewDistance = $("#viewDistance").val();
   var levelName = $("#levelName").val();
-  var levelSeed = $("#levelName").val();
+  var levelSeed = $("#levelSeed").val();
 
   var jsonString = `{"AllowFlight": "${allowFlight}", "AllowNether": "${allowNether}", "BroadcastConsoleOps": "${broadcastConsoleOps}", "BroadcastRconOps": "${broadcastRconOps}", "Difficulty": "${difficulty}", "EnableCommandBlock": "${enableCommandBlock}", "EnableJmxMonitoring": "${enableJmxMonitoring}", "EnableRcon": "${enableRcon}", "EnableStatus": "${enableStatus}", "EnableQuery": "${enableQuery}", "EnforceSecureProfile": "${enforceSecureProfile}", "EnforceWhitelist": "${enforceWhitelist}", "EntityBroadcastRangePercent": ${entityBroadcastRangePercent}, "ForceGamemode": "${forceGamemode}", "FuncPermLevel": ${funcPermLevel}, "Gamemode": "${gamemode}", "GenerateStructures": "${generateStructures}", "Hardcore": "${hardcore}", "HideOnlinePlayers": "${hideOnlinePlayers}", "LevelName": "${levelName}", "LevelSeed": "${levelSeed}", "MaxChainedNeighborUpdates": ${maxChainedNeighborUpdates}, "MaxPlayers": ${maxPlayers}, "MaxTickTime": ${maxTickTime}, "MaxWorldSize": ${maxWorldSize}, "Motd": "${motd}", "NetworkCompressionThreshold": ${networkCompressionThreshold}, "OnlineMode": "${onlineMode}", "OpPermLevel": ${opPermLevel}, "PlayerIdleTimeout": ${playerIdleTimeout}, "PreventProxyConnections": "${preventProxyConnections}", "PreviewsChat": "${previewsChat}", "Pvp": "${pvp}", "QueryPort": ${queryPort}, "RateLimit": ${rateLimit}, "RconPassword": "${rconPassword}", "RconPort": ${rconPort}, "ResourcePack": "${resourcePack}", "ResourcePackPrompt": "${resourcePackPrompt}", "ResourcePackSha1": "${resourcePackSha1}", "RequireResourcePack": "${requireResourcePack}", "ServerIP": "${serverIP}", "ServerPort": ${serverPort}, "SimDistance": ${simDistance}, "SnooperEnabled": "${snooperEnabled}", "SpawnAnimals": "${spawnAnimals}", "SpawnMonsters": "${spawnMonsters}", "SpawnNPCs": "${spawnNPCs}", "SpawnProtection": ${spawnProtection}, "SyncChunkWrites": "${syncChunkWrites}", "UseNativeTransport": "${useNativeTransport}", "ViewDistance": ${viewDistance}, "Whitelist": "${whitelist}"}`;
 
@@ -85,25 +93,42 @@ function sendRequest() {
   window.location.replace(encodeURI(baseUrl + "?jsonString=" + jsonString + "&overlay=true"));
 }
 
+function pageSet(httpReturn, mode) {
+  const displayReadyHTML = truncate(httpReturn.replace(/(\r\n|\r|\n)/g, "<br>"), ",<br>level-name");
+  $("#server-response-display").html(displayReadyHTML + "...");
+  localStorage.setItem("responseData", httpReturn);
+}
+
 function spawnAlert() {
   if (getUrlVars()["overlay"]) {
     console.log("Enabling overlay....");
     $("#overlay").css("visibility", "visible");
+    getData();
   }
 }
 
-function pageSet(httpReturn) {
-  const displayReadyHTML = httpReturn.replace(/(\r\n|\r|\n)/g, "<br>");
-  $("#pageBody").html(displayReadyHTML);
-  console.log(httpReturn);
-}
-
-function responsePageLoad() {
+function getData() {
   const http = new XMLHttpRequest();
   json = encodeURI(getUrlVars()["jsonString"]);
+  console.log(json);
   const url = "http://127.0.0.1:8080/server-properties?jsonString=" + json;
   http.open("GET", url);
   http.send();
 
   http.onreadystatechange = (e) => pageSet(http.responseText);
+}
+
+function downloadData() {
+  const data = localStorage.getItem("responseData");
+  const blob = new Blob([data], { type: "text/plain" });
+  const tempLink = document.createElement("a");
+  tempLink.href = URL.createObjectURL(blob);
+  tempLink.download = "server.properties";
+  document.body.appendChild(tempLink);
+  tempLink.click();
+  document.body.removeChild(tempLink);
+}
+
+function dissmissAlert() {
+  $("#overlay").css("visibility", "hidden");
 }
