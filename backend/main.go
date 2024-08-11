@@ -26,13 +26,13 @@ func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
 	var jsonProperties serverProperties
 
 	encodedJsonString := r.URL.Query().Get("jsonString")
-	jsonString, err1 := url.QueryUnescape(encodedJsonString)
-	if err1 != nil {
-		fmt.Fprintf(w, "Error decoding url: %v", err1)
+	jsonString, err := url.QueryUnescape(encodedJsonString)
+	if err != nil {
+		fmt.Fprintf(w, "Error decoding url: %v", err)
 	}
 	fmt.Printf("Recived jsonString: %v\n", jsonString)
 
-	err := json.Unmarshal([]byte(jsonString), &jsonProperties)
+	err = json.Unmarshal([]byte(jsonString), &jsonProperties)
 	if err != nil {
 		fmt.Fprintf(w, "Error parsing JSON: %v", err)
 		return
