@@ -2,3 +2,6 @@
 
 A simple system to easially provision Minecraft servers<br>
 Made by [arithefirst](https://arithefirst.com)
+
+> [!IMPORTANT]  
+> NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br> <sup><sub>(The above was added to comply with [Minecraft's Usage Guidelines](https://www.minecraft.net/en-us/usage-guidelines))</sub></sup>
