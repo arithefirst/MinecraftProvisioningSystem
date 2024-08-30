@@ -120,7 +120,7 @@ function sendRequest() {
   window.location.replace(encodeURI(baseUrl + "?jsonString=" + jsonString + "&overlay=true"));
 }
 
-function pageSet(httpReturn, mode) {
+function pageSet(httpReturn) {
   const displayReadyHTML = truncate(httpReturn.replace(/(\r\n|\r|\n)/g, "<br>"), ",<br>level-name");
   $("#server-response-display").html(displayReadyHTML + "...");
   localStorage.setItem("responseData", httpReturn);
