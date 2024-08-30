@@ -1,3 +1,6 @@
+// Set the application's base URL
+const baseUrl = "http://127.0.0.1:8080";
+
 // Initalize the tooltips
 document.addEventListener("DOMContentLoaded", function () {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -138,7 +141,7 @@ function getData() {
   const http = new XMLHttpRequest();
   json = encodeURI(getUrlVars()["jsonString"]);
   console.log(json);
-  const url = "http://127.0.0.1:8080/server-properties?jsonString=" + json;
+  const url = `${baseUrl}/api/v1/server-properties?jsonString=${json}`;
   http.open("GET", url);
   http.send();
 
