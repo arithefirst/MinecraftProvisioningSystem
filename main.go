@@ -20,7 +20,7 @@ func (bit *Bool) UnmarshalJSON(b []byte) error {
 
 func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
 
-	// Frontend sends the server.properties config VIA headers in a get request
+	// Frontend sends the server.properties config VIA querystring in a get request
 	// Func converts it into a server.properties file and returns it in the get request
 
 	var jsonProperties serverProperties
@@ -46,7 +46,9 @@ func main() {
 	// Set the port for the server to run on
 	var port uint16 = 8080
 
-	http.HandleFunc("/server-properties", serverPropertiesHttp)
+	http.HandleFunc("/api/v1/server-properties", serverPropertiesHttp)
+	http.Handle("/", http.FileServer(http.Dir("frontend/")))
+
 	fmt.Printf("Server started on port %v\n", port)
 	var portString string = ":" + strconv.Itoa(int(port))
 	http.ListenAndServe(portString, nil)
