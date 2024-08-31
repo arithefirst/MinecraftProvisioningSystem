@@ -7,7 +7,7 @@ import (
 func retriveServerJar(platform string, ver string) {
 	switch strings.ToLower(platform) {
 	case "vanilla":
-		// Create maps to store the URLs of each server type jarfile
+		// Create map to store the URLs of each server type jarfile
 		jarfile := make(map[string]string)
 
 		// Vanilla 1.12
@@ -76,7 +76,7 @@ func retriveServerJar(platform string, ver string) {
 		}
 
 	case "forge":
-		// Create maps to store the URLs of each server type jarfile
+		// Create map to store the URLs of each server type jarfile
 		jarfile := make(map[string]string)
 
 		// Forge 1.12
@@ -149,6 +149,63 @@ func retriveServerJar(platform string, ver string) {
 		}
 
 	case "fabric":
+		// Create map to store the URLs of each server type jarfile
+		jarfile := make(map[string]string)
+
+		// Fabric  1.14
+		jarfile["1.14"] = "https://meta.fabricmc.net/v2/versions/loader/1.14/0.16.2/1.0.1/server/jar"
+		jarfile["1.14.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.14.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.14.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.14.2/0.16.2/1.0.1/server/jar"
+		jarfile["1.14.3"] = "https://meta.fabricmc.net/v2/versions/loader/1.14.3/0.16.2/1.0.1/server/jar"
+		jarfile["1.14.4"] = "https://meta.fabricmc.net/v2/versions/loader/1.14.4/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.15
+		jarfile["1.15"] = "https://meta.fabricmc.net/v2/versions/loader/1.15/0.16.2/1.0.1/server/jar"
+		jarfile["1.15.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.15.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.15.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.15.2/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.16
+		jarfile["1.16"] = "https://meta.fabricmc.net/v2/versions/loader/1.16/0.16.2/1.0.1/server/jar"
+		jarfile["1.16.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.16.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.16.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.16.2/0.16.2/1.0.1/server/jar"
+		jarfile["1.16.3"] = "https://meta.fabricmc.net/v2/versions/loader/1.16.3/0.16.2/1.0.1/server/jar"
+		jarfile["1.16.4"] = "https://meta.fabricmc.net/v2/versions/loader/1.16.4/0.16.2/1.0.1/server/jar"
+		jarfile["1.16.5"] = "https://meta.fabricmc.net/v2/versions/loader/1.16.5/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.17
+		jarfile["1.17"] = "https://meta.fabricmc.net/v2/versions/loader/1.17/0.16.2/1.0.1/server/jar"
+		jarfile["1.17.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.17.1/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.18
+		jarfile["1.18"] = "https://meta.fabricmc.net/v2/versions/loader/1.18/0.16.2/1.0.1/server/jar"
+		jarfile["1.18.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.18.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.18.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.18.2/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.19
+		jarfile["1.19"] = "https://meta.fabricmc.net/v2/versions/loader/1.19/0.16.2/1.0.1/server/jar"
+		jarfile["1.19.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.19.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.19.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.19.2/0.16.2/1.0.1/server/jar"
+		jarfile["1.19.3"] = "https://meta.fabricmc.net/v2/versions/loader/1.19.3/0.16.2/1.0.1/server/jar"
+		jarfile["1.19.4"] = "https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.20
+		jarfile["1.20"] = "https://meta.fabricmc.net/v2/versions/loader/1.20/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.1/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.2"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.2/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.3"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.3/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.4"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.4/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.5"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.5/0.16.2/1.0.1/server/jar"
+		jarfile["1.20.6"] = "https://meta.fabricmc.net/v2/versions/loader/1.20.6/0.16.2/1.0.1/server/jar"
+
+		// Fabric  1.21
+		jarfile["1.21"] = "https://meta.fabricmc.net/v2/versions/loader/1.21/0.16.2/1.0.1/server/jar"
+		jarfile["1.21.1"] = "https://meta.fabricmc.net/v2/versions/loader/1.21.1/0.16.2/1.0.1/server/jar"
+
+		// Download the server.jar
+		err := DownloadFile(jarfile[ver], "server.jar")
+		if err != nil {
+			panic(err)
+		}
 	case "spigot":
 	case "default":
 
