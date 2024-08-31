@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"slices"
 	"strings"
 )
@@ -37,55 +36,13 @@ func main() {
 	retriveServerJar(os.Args[1], os.Args[2])
 
 	// Run the different setup procedures depending on the server type
-	if strings.ToLower(os.Args[1]) == "vanilla" {
-		// Set the eula to true
-		fmt.Println("Setting \"eula=true\"")
-		eulaTrue := []byte("eula=true")
-		err := os.WriteFile("eula.txt", eulaTrue, 0644)
-		if err != nil {
-			panic(err)
-		}
-
-		// Run the minecraft server
-		fmt.Println("Generating Files....")
-		cmd := exec.Command("java", "-Xmx1024M", "-Xms1024M", "-jar", "server.jar", "nogui")
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		cmd.Stdin = os.Stdin
-
-		err = cmd.Start()
-		if err != nil {
-			panic(err)
-		}
-
-	} else if strings.ToLower(os.Args[1]) == "fabric" {
-		invalidFabric := []string{"1.12", "1.12.1", "1.12.2", "1.13", "1.13.1"}
-		if slices.Contains(invalidFabric, os.Args[2]) {
-			panic("Err: Fabric only supports 1.14+")
-		} else {
-			// Fabric code here
-		}
-
-	} else if strings.ToLower(os.Args[1]) == "forge" {
-		// Set the eula to true
-		fmt.Println("Setting \"eula=true\"")
-		eulaTrue := []byte("eula=true")
-		err := os.WriteFile("eula.txt", eulaTrue, 0644)
-		if err != nil {
-			panic(err)
-		}
-
-		// Run the minecraft server
-		fmt.Println("Generating Files....")
-		cmd := exec.Command("java", "-jar", "server.jar", "--installServer")
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		cmd.Stdin = os.Stdin
-
-		err = cmd.Start()
-		if err != nil {
-			panic(err)
-		}
+	switch strings.ToLower(os.Args[1]) {
+	case "vanilla":
+		vanilla()
+	case "forge":
+		forge()
+	case "fabric":
+		fabric(os.Args[2])
 	}
 
 }
