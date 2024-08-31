@@ -53,9 +53,9 @@ func main() {
 		cmd.Stderr = os.Stderr
 		cmd.Stdin = os.Stdin
 
-		cmdErr := cmd.Start()
-		if cmdErr != nil {
-			panic(cmdErr)
+		err = cmd.Start()
+		if err != nil {
+			panic(err)
 		}
 
 	} else if strings.ToLower(os.Args[1]) == "fabric" {
@@ -64,6 +64,27 @@ func main() {
 			panic("Err: Fabric only supports 1.14+")
 		} else {
 			// Fabric code here
+		}
+
+	} else if strings.ToLower(os.Args[1]) == "forge" {
+		// Set the eula to true
+		fmt.Println("Setting \"eula=true\"")
+		eulaTrue := []byte("eula=true")
+		err := os.WriteFile("eula.txt", eulaTrue, 0644)
+		if err != nil {
+			panic(err)
+		}
+
+		// Run the minecraft server
+		fmt.Println("Generating Files....")
+		cmd := exec.Command("java", "-jar", "server.jar", "--installServer")
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		cmd.Stdin = os.Stdin
+
+		err = cmd.Start()
+		if err != nil {
+			panic(err)
 		}
 	}
 
