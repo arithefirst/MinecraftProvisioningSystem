@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"slices"
 )
 
 // Create and run the Vanilla server
@@ -30,13 +29,27 @@ func vanilla() {
 	}
 }
 
-func fabric(ver string) {
-	invalidFabric := []string{"1.12", "1.12.1", "1.12.2", "1.13", "1.13.1"}
-	if slices.Contains(invalidFabric, ver) {
-		panic("Err: Fabric only supports 1.14+")
-	} else {
-		// Fabric code here
+func fabric() {
+	// Set the eula to true
+	fmt.Println("Setting \"eula=true\"")
+	eulaTrue := []byte("eula=true")
+	err := os.WriteFile("eula.txt", eulaTrue, 0644)
+	if err != nil {
+		panic(err)
 	}
+
+	// Install and start the server
+	fmt.Println("Generating Files....")
+	cmd := exec.Command("java", "-jar", "server.jar")
+
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Stdin = os.Stdin
+	err = cmd.Start()
+	if err != nil {
+		panic(err)
+	}
+
 }
 
 func forge() {
@@ -59,6 +72,7 @@ func forge() {
 	if err != nil {
 		panic(err)
 	}
+
 	// Wait for the installer to finish before trying to run the server
 	err = install.Wait()
 	if err != nil {

@@ -32,17 +32,28 @@ func main() {
 	}
 
 	// Download server.jar for requested version
-	fmt.Printf("Downloading server.jar for %v %v\n", os.Args[1], os.Args[2])
-	retriveServerJar(os.Args[1], os.Args[2])
+	fmt.Printf("Downloading server.jar for %v %v\n", strings.ToLower(os.Args[1]), os.Args[2])
 
 	// Run the different setup procedures depending on the server type
 	switch strings.ToLower(os.Args[1]) {
+
 	case "vanilla":
+		retriveServerJar(os.Args[1], os.Args[2])
 		vanilla()
+
 	case "forge":
+		retriveServerJar(os.Args[1], os.Args[2])
 		forge()
+
 	case "fabric":
-		fabric(os.Args[2])
+		// If the version is below 1.14, throw an error
+		if slices.Contains([]string{"1.12", "1.12.1", "1.12.2", "1.13", "1.13.1", "1.13.2"}, os.Args[2]) {
+			panic("Err: Fabric only supports versions 1.14+")
+		} else {
+			retriveServerJar(os.Args[1], os.Args[2])
+			fabric()
+		}
+
 	}
 
 }
