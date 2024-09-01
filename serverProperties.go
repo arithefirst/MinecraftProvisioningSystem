@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -59,6 +62,30 @@ type serverProperties struct {
 	UseNativeTransport          Bool   `schema:"useNativeTransport"`
 	ViewDistance                int    `schema:"viewDistance"` // Range 3-32
 	Whitelist                   Bool   `schema:"whitelist"`
+}
+
+func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
+
+	// Frontend sends the server.properties config VIA querystring in a get request
+	// Func converts it into a server.properties file and returns it in the get request
+
+	var jsonProperties serverProperties
+
+	encodedJsonString := r.URL.Query().Get("jsonString")
+	jsonString, err := url.QueryUnescape(encodedJsonString)
+	if err != nil {
+		fmt.Fprintf(w, "Error decoding url: %v", err)
+	}
+	fmt.Printf("Recived jsonString: %v\n", jsonString)
+
+	err = json.Unmarshal([]byte(jsonString), &jsonProperties)
+	if err != nil {
+		fmt.Fprintf(w, "Error parsing JSON: %v", err)
+		return
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	fmt.Fprintf(w, "%v", generateServerProperties(jsonProperties))
 }
 
 func generateServerProperties(input serverProperties) string {

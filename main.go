@@ -2,10 +2,8 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
 	"strconv"
 )
 
@@ -18,35 +16,19 @@ func (bit *Bool) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func serverPropertiesHttp(w http.ResponseWriter, r *http.Request) {
-
-	// Frontend sends the server.properties config VIA querystring in a get request
-	// Func converts it into a server.properties file and returns it in the get request
-
-	var jsonProperties serverProperties
-
-	encodedJsonString := r.URL.Query().Get("jsonString")
-	jsonString, err := url.QueryUnescape(encodedJsonString)
-	if err != nil {
-		fmt.Fprintf(w, "Error decoding url: %v", err)
-	}
-	fmt.Printf("Recived jsonString: %v\n", jsonString)
-
-	err = json.Unmarshal([]byte(jsonString), &jsonProperties)
-	if err != nil {
-		fmt.Fprintf(w, "Error parsing JSON: %v", err)
-		return
-	}
-
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	fmt.Fprintf(w, "%v", generateServerProperties(jsonProperties))
-}
-
 func main() {
 	// Set the port for the server to run on
 	var port uint16 = 8080
 
+	// Endpoint for server.properties config generator
 	http.HandleFunc("/api/v1/server-properties", serverPropertiesHttp)
+
+	// Endpoints for getting jarfiles
+	http.HandleFunc("/api/v1/jarfile/vanilla", getJarfileVanilla)
+	http.HandleFunc("/api/v1/jarfile/fabric", getJarfileFabric)
+	http.HandleFunc("/api/v1/jarfile/forge", getJarfileForge)
+
+	// Server the files in frontend/ at /
 	http.Handle("/", http.FileServer(http.Dir("frontend/")))
 
 	fmt.Printf("Server started on port %v\n", port)
