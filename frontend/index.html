@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
+    <title>server.properties</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="main.css"/>
     <link rel="stylesheet" href="fonts.css"/>
@@ -20,7 +21,7 @@
         </div>
         <h1>Server Response</h1>
         <a>
-        <pre><code id="server-response-display"></code></pre>
+            <pre><code id="server-response-display"></code></pre>
         </a>
         <button id="download" class="btn btn-primary" onclick="downloadData()">Download server.properties</button>
     </div>
@@ -32,7 +33,7 @@
 </div>
 <div class="d-flex align-items-center justify-content-center">
     <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top: 3px;">
-        To keep an item at its default setting, don't modify it's switch or input
+        To keep an item at its default setting, don't modify its switch or input
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </div>
@@ -46,164 +47,164 @@
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="allowFlight"/>
                     <label class="form-check-label" for="allowFlight">Allow flight</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Allows users to use flight on the server while in Survival mode, if they have a mod that provides flight installed."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="allowNether" checked/>
                     <label class="form-check-label" for="allowNether">Allow Nether</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Allows players to travel to the nether"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="broadcastConsoleOps" checked/>
                     <label class="form-check-label" for="broadcastConsoleOps">Broadcast Console to OPs</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Send console command outputs to all online operators"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="broadcastRconOps" checked/>
                     <label class="form-check-label" for="broadcastRconOps">Broadcast RCON to OPs</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Send rcon console command outputs to all online operators"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enableCommandBlock"/>
                     <label class="form-check-label" for="enableCommandBlock">Enable Command Blocks</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-                       data-bs-title="Defines wether or not command blocks will work on the server"></i>
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-title="Defines whether or not command blocks will work on the server"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enableJmxMonitoring"/>
                     <label class="form-check-label" for="enableJmxMonitoring">Enable JMX Monitoring</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-html="true" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle" data-bs-html="true" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="Exposes an MBean with the Object name <code>net.minecraft.server:type=Server </code> and two attriubtes <code>averageTickTime</code> and <code>tickTimes</code> exposing the tick times in milliseconds"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enableRcon"/>
                     <label class="form-check-label" for="enableRcon">Enable RCON</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enables remote access to the server console"></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enableStatus" checked/>
                     <label class="form-check-label" for="enableStatus">Enable Status</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title='Makes the server appear as "online" on the server list. If disabled, it will suppress replies from clients. This means it will appear as offline, but will still accept connections.'></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enableQuery"/>
                     <label class="form-check-label" for="enableQuery">Enable Query</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enables GameSpy4 protocol server listener. Used to get information about server."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enforceSecureProfile" checked/>
                     <label class="form-check-label" for="enforceSecureProfile">Enforce secure profile</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="If enabled, players without a Mojang-signed public key will not be able to connect to the server."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="enforceWhitelist"/>
                     <label class="form-check-label" for="enforceWhitelist">Enforce whitelist</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="When this option is enabled, users who are not present on the whitelist (if it's enabled) get kicked from the server after the server reloads the whitelist file."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="forceGamemode"/>
                     <label class="form-check-label" for="forceGamemode">Force gamemode</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Force players to join in the default game mode."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="generateStructures" checked/>
                     <label class="form-check-label" for="generateStructures">Generate structures</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="true 	Defines whether structures (such as villages) can be generated. Dungeons still generate if this is set to false."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="hardcore"/>
                     <label class="form-check-label" for="hardcore">Hardcore server</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="If enabled, server difficulty is ignored and set to hard and players are set to spectator mode if they die."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="hideOnlinePlayers"/>
                     <label class="form-check-label" for="hideOnlinePlayers">Hide online players</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="If enabled, a player list is not sent on status requests."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="onlineMode" checked/>
                     <label class="form-check-label" for="onlineMode">Online mode</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="If enabled, the server checks connecting players against Minecraft account database. Disabling this allows players with unlicensed copies of Minecraft to join."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="preventProxyConnections"/>
                     <label class="form-check-label" for="preventProxyConnections">Prevent proxy connections</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="If the ISP/AS sent from the server is different from the one from Mojang Studios' authentication server, the player is kicked."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="previewsChat"/>
                     <label class="form-check-label" for="previewsChat">Preview chat</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="When enabled, a server-controlled preview appears above the chat edit box, showing players how the message will look when sent."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="pvp" checked/>
                     <label class="form-check-label" for="pvp">PvP</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enable PvP on the server. Players shooting themselves with arrows receive damage only if PvP is enabled."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="requireResourcePack"/>
                     <label class="form-check-label" for="requireResourcePack">Require resource pack</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="When this option is enabled, players will be prompted for a response and will be disconnected if they decline the resource pack. Only set this to true if you have specified a resource pack."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="snooperEnabled"/>
                     <label class="form-check-label" for="snooperEnabled">Snooper enabled</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-                       data-bs-title="Sets whether the server sends snoop data regularly to http://snoop.minecraft.net."></i>
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-title="Sets whether the server sends snoop data regularly to https://snoop.minecraft.net."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="spawnAnimals" checked/>
                     <label class="form-check-label" for="spawnAnimals">Spawn Animals</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Determines if animals can spawn."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="spawnMonsters" checked/>
                     <label class="form-check-label" for="spawnMonsters">Spawn Monsters</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Determines if monsters can spawn."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="spawnNPCs" checked/>
                     <label class="form-check-label" for="spawnNPCs">Spawn Villagers</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Determines if villagers can spawn."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="syncChunkWrites" checked/>
                     <label class="form-check-label" for="syncChunkWrites">Synchronous chunk writes </label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enables synchronous chunk writes."></i>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="useNativeTransport" checked/>
                     <label class="form-check-label" for="useNativeTransport">Use native transport</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enables optimized packet sending/receiving on Linux."></i>
                 </div>
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" role="switch" id="whitelist"/>
                     <label class="form-check-label" for="whitelist">Whitelist Enabled</label>
-                    <i class="bi bi-info-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
                        data-bs-title="Enables a whitelist on the server."></i>
                 </div>
             </div>
@@ -214,136 +215,136 @@
                 <hr class="solid-bold"/>
                 <!-- Difficulty -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Difficulty</span>
+                    <label class="input-group-text" for="difficulty">Difficulty</label>
                     <input value="Easy" type="text" class="form-control" id="difficulty">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='Sets the server difficulty. Can be Easy, Normal, Hard, or Peaceful.'></i>
                 </div>
                 <!-- Entity Broadcast Range Precentage -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Entity Broadcast Range Precentage</span>
+                    <label for="entityBroadcastRangePercent" class="input-group-text">Entity Broadcast Range Precentage</label>
                     <input value="10" type="number" min="10" max="100" class="form-control"
                            id="entityBroadcastRangePercent">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="Controls how close entities need to be before being sent to clients. Higher values means they'll be rendered from farther away, potentially causing more lag. This is expressed the percentage of the default value. For example, setting to 50 will make it half as usual. This mimics the function on the client video settings (not unlike Render Distance, which the client can customize so long as it's under the server's setting)."></i>
                 </div>
                 <!-- Function permission level -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Function Permission Level</span>
+                    <label for="funcPermLevel" class="input-group-text">Function Permission Level</label>
                     <input value="2" type="number" min=1" max="4" class="form-control" id="funcPermLevel">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top" data-bs-title="Sets the default permission level for functions."></i>
                 </div>
                 <!-- Gamemode -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Gamemode</span>
+                    <label for="gamemode" class="input-group-text">Gamemode</label>
                     <input value="Survival" type="text" class="form-control" id="gamemode">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="Defines the mode of gameplay. Can be Survival, Creative, Spectator, or Adventure."></i>
                 </div>
                 <!-- Level Name -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Level Name</span>
+                    <label for="levelName" class="input-group-text">Level Name</label>
                     <input value="world" type="text" class="form-control" id="levelName">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='The "level-name" value is used as the world name and its folder name.'></i>
                 </div>
                 <!-- Level Seed -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Level Seed</span>
+                    <label for="levelSeed" class="input-group-text">Level Seed</label>
                     <input value="" type="text" class="form-control" id="levelSeed">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="Sets a world seed for the server. The world generates with a random seed if left blank."></i>
                 </div>
                 <!-- Max Chained Neighbor Updates -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Max Chained Neighbor Updates</span>
+                    <label for="maxChainedNeighborUpdates" class="input-group-text">Max Chained Neighbor Updates</label>
                     <input value="1000000" type="number" class="form-control" id="maxChainedNeighborUpdates">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="Limiting the amount of consecutive neighbor updates before skipping additional ones. Negative values remove the limit."></i>
                 </div>
                 <!-- Max Players -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Max Players</span>
+                    <label for="maxPlayers" class="input-group-text">Max Players</label>
                     <input value="20" type="number" min="0" max="2147483647" class="form-control" id="maxPlayers">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="The maximum number of players that can play on the server at the same time."></i>
                 </div>
                 <!-- Max Tick Time -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Max Tick Time</span>
+                    <label for="maxTickTime" class="input-group-text">Max Tick Time</label>
                     <input value="60000" type="number" min="-1" max="9223372036854775807" class="form-control"
                            id="maxTickTime">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="The maximum number of milliseconds a single tick may take before the server watchdog stops the server. Setting this to -1 disables the watchdog entirely."></i>
                 </div>
                 <!-- Max World Size -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Max World Size</span>
+                    <label for="maxWorldSize" class="input-group-text">Max World Size</label>
                     <input value="29999984" type="number" min="1" max="29999984" class="form-control" id="maxWorldSize">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="This sets the maximum possible size in blocks, expressed as a radius, that the world border can obtain."></i>
                 </div>
                 <!-- MOTD -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">MOTD</span>
+                    <label for="motd" class="input-group-text">MOTD</label>
                     <input value="A Minecraft Server" type="text" class="form-control" maxlength="59" id="motd">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title="This is the message that is displayed in the server list of the client, below the name. If the MOTD is over 59 characters, the server list may report a communication error."></i>
                 </div>
                 <!-- Network Compression Threshold -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Network Compression Threshold</span>
+                    <label for="networkCompressionThreshold" class="input-group-text">Network Compression Threshold</label>
                     <input value="256" type="number" min="-1" class="form-control" id="networkCompressionThreshold">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="By default Network Compression Threshold allows packets that are <i>n-1</i> bytes big to go normally, but a packet of <i>n</i> bytes or more gets compressed down. So, a lower number means more compression but compressing small amounts of bytes might actually end up with a larger result than what went in. Setting this to 0 compresses everything, and setting this to -1 disables compression entirely."></i>
                 </div>
                 <!-- Operator permission level -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">OP Permission Level</span>
+                    <label for="opPermLevel" class="input-group-text">OP Permission Level</label>
                     <input value="4" type="number" min=1" max="4" class="form-control" id="opPermLevel">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top" data-bs-title="Sets the default permission level for operators."></i>
                 </div>
                 <!-- Player Idle Timeout -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Player Idle Timeout</span>
+                    <label for="playerIdleTimeout" class="input-group-text">Player Idle Timeout</label>
                     <input value="0" type="number" min="0" class="form-control" id="playerIdleTimeout">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="If non-zero, players are kicked from the server if they are idle for more than that many minutes."></i>
                 </div>
                 <!-- Query Port -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Query Port</span>
+                    <label for="queryPort" class="input-group-text">Query Port</label>
                     <input value="25565" type="number" min="1" max="65534" class="form-control" id="queryPort">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top" data-bs-title="Sets the port for the query server."></i>
                 </div>
                 <!-- Rate Limit -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Rate Limit</span>
+                    <label for="rateLimit" class="input-group-text">Rate Limit</label>
                     <input value="0" type="number" min="0" class="form-control" id="rateLimit">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="Sets the maximum amount of packets a user can send before getting kicked. Setting to 0 disables this feature."></i>
                 </div>
                 <!-- Rcon Password -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Rcon Password</span>
+                    <label for="rconPassword" class="input-group-text">Rcon Password</label>
                     <input type="password" class="form-control" id="rconPassword">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top" data-bs-title="Sets the password for RCON"></i>
                 </div>
             </div>
@@ -354,72 +355,72 @@
                 <hr class="solid-bold"/>
                 <!-- Rcon Port -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Rcon Port</span>
+                    <label for="rconPort" class="input-group-text">Rcon Port</label>
                     <input value="25575" type="number" min="1" max="65534" class="form-control" id="rconPort">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top" data-bs-title="Sets the port for the RCON server."></i>
                 </div>
                 <!-- Resource Pack -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Resource Pack</span>
+                    <label for="resourcePack" class="input-group-text">Resource Pack</label>
                     <input value="" type="text" class="form-control" id="resourcePack">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='Optional URI to a resource pack. The player may choose to use it unless "Require resource pack" is enabled.'></i>
                 </div>
                 <!-- Resource Pack Prompt -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Resource Pack Prompt</span>
+                    <label for="resourcePackPrompt" class="input-group-text">Resource Pack Prompt</label>
                     <input value="" type="text" class="form-control" id="resourcePackPrompt">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='Optional, adds a custom message to be shown on resource pack prompt when "Require resource pack" is used.'></i>
                 </div>
                 <!-- Resource Pack SHA1 -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Resource Pack SHA1</span>
+                    <label for="resourcePackSha1" class="input-group-text">Resource Pack SHA1</label>
                     <input value="" type="text" class="form-control" id="resourcePackSha1">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='Optional SHA-1 digest of the resource pack, in lowercase hexadecimal. It is recommended to specify this, because it is used to verify the integrity of the resource pack.'></i>
                 </div>
                 <!-- Server IP -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Server IP</span>
+                    <label for="serverIP" class="input-group-text">Server IP</label>
                     <input value="" type="text" class="form-control" id="serverIP">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip"
                        data-bs-placement="top"
                        data-bs-title='Binds the server to a particular IP. It is strongly recommended that this be left blank.'></i>
                 </div>
                 <!-- Server Port -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Server Port</span>
+                    <label for="serverPort" class="input-group-text">Server Port</label>
                     <input value="25565" type="number" min="1" max="65534" class="form-control" id="serverPort">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="Changes the port the server is hosting (listening) on. This port must be forwarded if the server is hosted in a network using NAT (if the player has a home router/firewall)."></i>
                 </div>
                 <!-- Simulation Distance -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Simulation Distance</span>
+                    <label for="simulationDistance" class="input-group-text">Simulation Distance</label>
                     <input id="simulationDistance" value="10" type="number" min="3" max="32" class="form-control">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="Sets the maximum distance from players that living entities may be located in order to be updated by the server, measured in chunks in each direction of the player (radius, not diameter). If entities are outside of this radius, then they will not be ticked by the server nor will they be visible to players."></i>
                 </div>
                 <!-- Spawn Protection -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">Spawn Protection</span>
+                    <label for="spawnProtection" class="input-group-text">Spawn Protection</label>
                     <input id="spawnProtection" value="0" type="number" min="3" max="32" class="form-control">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="Determines the side length of the square spawn protection area as 2x+1. Setting this to 0 disables the spawn protection. A value of 1 protects a 3×3 square centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. If there are no ops set on the server, the spawn protection is disabled automatically."></i>
                 </div>
                 <!-- View Distance -->
                 <div class="input-group d-flex align-items-center mb-1">
-                    <span class="input-group-text">View Distance</span>
+                    <label for="viewDistance" class="input-group-text">View Distance</label>
                     <input id="viewDistance" value="10" type="number" min="3" max="32" class="form-control">
-                    <i class="bi bi-info-circle ms-2 align-middle" href="#" data-bs-toggle="tooltip" data-bs-html="true"
+                    <i class="bi bi-info-circle ms-2 align-middle" data-bs-toggle="tooltip" data-bs-html="true"
                        data-bs-placement="top"
                        data-bs-title="Sets the amount of world data the server sends the client, measured in chunks in each direction of the player (radius, not diameter). It determines the server-side viewing distance."></i>
                 </div>
@@ -433,6 +434,7 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"
     ></script>
+</div>
 </body>
 <!-- Toast -->
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
