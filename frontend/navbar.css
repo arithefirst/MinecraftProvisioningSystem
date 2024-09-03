@@ -1,0 +1,22 @@
+.bottom-navbar {
+    position: fixed;
+    width: calc(100vw - 20px);
+    height: 50px;
+    bottom: 0;
+    margin: 10px;
+    border: 3px solid #343a40;
+    border-radius: 10px;
+    background-color: #212529;
+    text-align: center;
+}
+
+.divtxt {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Add 30px padding to bottom of page so navbar won't cover up toggles or inputs*/
+.b-spacer {
+    padding-bottom: 30px;
+}
