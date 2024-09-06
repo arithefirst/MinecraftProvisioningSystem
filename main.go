@@ -33,5 +33,8 @@ func main() {
 
 	fmt.Printf("Server started on port %v\n", port)
 	var portString string = ":" + strconv.Itoa(int(port))
-	http.ListenAndServe(portString, nil)
+	err := http.ListenAndServe(portString, nil)
+	if err != nil {
+		return
+	}
 }
